@@ -1,0 +1,38 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+#    url: postgresql://postgres:viewadmin2014@127.0.0.1/openfire
+    url: jdbc:postgresql://192.168.2.134:5432/openfire
+    username: postgres
+    password: viewadmin2014
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+
+
+#----------------swagger配置-----------------------
+swagger:
+  enable: true #生产环境false
+  
+package:
+  parent: cn.akeychat.enterprise
+  
